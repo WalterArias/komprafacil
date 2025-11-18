@@ -7,19 +7,37 @@ import {
   getSingleProduct,
   updateProduct,
   deleteProduct,
-  //   createProductReview,
-  //   getProductReviews,
-  //   deleteReview,
 } from "../controllers/productController.js";
+import { isAuthenticatedUser, rolAutorizado } from "../middlewares/auth.js";
 
-router.get("/products", getProducts);
-router.post("/products/new", newProduct);
-router.get("/products/:id", getSingleProduct);
-router.put("/products/:id", updateProduct);
-router.delete("/products/:id", deleteProduct);
-
-// router.route("/review").put(isAuthenticatedUser, createProductReview);
-// router.route("/reviews").get(isAuthenticatedUser, getProductReviews);
-// router.route("/reviews").delete(isAuthenticatedUser, deleteReview);
+router.get(
+  "/products",
+  isAuthenticatedUser,
+  getProducts
+);
+router.post(
+  "/products/new",
+  isAuthenticatedUser,
+  rolAutorizado("admin"),
+  newProduct
+);
+router.get(
+  "/products/:id",
+  isAuthenticatedUser,
+  rolAutorizado("admin"),
+  getSingleProduct
+);
+router.put(
+  "/products/:id",
+  isAuthenticatedUser,
+  rolAutorizado("admin"),
+  updateProduct
+);
+router.delete(
+  "/products/:id",
+  isAuthenticatedUser,
+  rolAutorizado("admin"),
+  deleteProduct
+);
 
 export default router;

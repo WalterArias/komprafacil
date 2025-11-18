@@ -1,0 +1,15 @@
+export const getResetPasswordTemplate = (username, resetUrl) => {
+  `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komprafacil</title>
+</head>
+<body>
+    <h1>Komprafacil</h1>
+    Señor ${username} para recuperar su contraseña de click en el enlace:
+    <a href=${resetUrl}>Recuperar Clave</a>
+</body>
+</html>`;
+};

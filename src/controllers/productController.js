@@ -3,6 +3,7 @@ import Product from "../models/product.js";
 // crea nuevo
 export const newProduct = async (req, res) => {
   try {
+    req.body.user = req.user._id;
     const product = await Product.create(req.body);
     res.status(201).json({
       success: true,
@@ -18,6 +19,7 @@ export const newProduct = async (req, res) => {
 
 // obtiene todos
 export const getProducts = async (req, res) => {
+  //console.log(req.user);
   try {
     const products = await Product.find();
     res.status(200).json({

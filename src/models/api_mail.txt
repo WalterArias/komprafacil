@@ -1,0 +1,13 @@
+4f229e1e65a3af3b17958d37d9d3727e
+
+
+
+// Looking to send emails in production? Check out our Email API/SMTP product!
+var transport = nodemailer.createTransport({
+  host: "sandbox.smtp.mailtrap.io",
+  port: 2525,
+  auth: {
+    user: "8adac2cedb07f9",
+    pass: "c84f259afb78d7"
+  }
+});
