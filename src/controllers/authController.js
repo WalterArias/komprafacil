@@ -1,7 +1,7 @@
 import { sendToken } from "../helpers/sendToken.js";
 import User from "../models/user.js";
 import { getResetPasswordTemplate } from "../helpers/emailPlantilla.js";
-
+import { sendEmail } from "../helpers/sendEmail.js";
 // Register a user   => /api/v1/register
 export const registerUser = async (req, res, next) => {
   try {
@@ -67,15 +67,15 @@ export const logout = async (req, res, next) => {
 //recuperar clave
 export const recuperarClave = async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
-
+  console.log(user);
   //verifica campos llenos
   if (!user) {
     throw new Error("Email  no ingresados");
   }
+  const resetToken = await user.getResetPasswordToken();
+  await user.save();
   const resetUrl = `${process.env.FRONTEND_URL}/api/v1/password/reset/${resetToken}`;
   const message = getResetPasswordTemplate(user?.name, resetUrl);
-
-  const resetToken = await user.getResetPasswordToken(user?.name, resetUrl);
 
   try {
     await sendEmail({
@@ -84,12 +84,16 @@ export const recuperarClave = async (req, res, next) => {
       message,
     });
     res.status(200).send({
+      success: true,
       message: `email enviado a ${user.email}`,
     });
   } catch (error) {
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
     await user.save();
-    throw new Error("error de envio");
+    res.status(404).send({
+      success: false,
+      error: error.message,
+    });
   }
 };
