@@ -1,6 +1,6 @@
-import { sendToken } from "../Helpers/sendToken.js";
+import { sendToken } from "../helpers/sendToken.js";
 import User from "../models/user.js";
-import { getResetPasswordTemplate } from "../Helpers/emailPlantilla.js";
+import { getResetPasswordTemplate } from "../helpers/emailPlantilla.js";
 
 // Register a user   => /api/v1/register
 export const registerUser = async (req, res, next) => {
