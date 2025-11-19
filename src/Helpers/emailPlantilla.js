@@ -1,4 +1,4 @@
-export const getResetPasswordTemplate = (username, resetUrl) => {
+export const getResetPasswordTemplate = (username, resetUrl) =>
   `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +9,6 @@ export const getResetPasswordTemplate = (username, resetUrl) => {
 <body>
     <h1>Komprafacil</h1>
     Señor ${username} para recuperar su contraseña de click en el enlace:
-    <a href=${resetUrl}>Recuperar Clave</a>
+    <a href="${resetUrl}">Recuperar Clave</a>
 </body>
 </html>`;
-};
