@@ -11,9 +11,11 @@ app.use(cookieParser());
 
 import productRoutes from "./src/routes/product.js";
 import authRoutes from "./src/routes/auth.js";
+import orderRoutes from "./src/routes/order.js";
 
 app.use("/api/v1", productRoutes);
 app.use("/api/v1", authRoutes);
+app.use("/api/v1", orderRoutes);
 
 let port = process.env.PORT || 8080;
 

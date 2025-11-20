@@ -1,0 +1,27 @@
+{
+  "shippingInfo": {
+    "address": "123 Main Street",
+    "city": "New York",
+    "phoneNo": "123-456-7890",
+    "postalCode": "10001",
+    "country": "USA"
+  },
+  "orderItems": [
+    {
+      "name": "Bicicleta",
+      "quantity": 2,
+      "image": "default.png",
+      "price": "39.99",
+      "product": "691bac470d0af18af1891ca3"
+    }
+  ],
+  "paymentMethod": "COD",
+  "paymentInfo": {
+    "id": "pago-aca",
+    "status": "Not Paid"
+  },
+  "itemsPrice": 79.97,
+  "taxAmount": 7.99,
+  "shippingAmount": 5.99,
+  "totalAmount": 93.95
+}

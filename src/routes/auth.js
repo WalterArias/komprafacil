@@ -40,12 +40,12 @@ router.put(
   "/admin/actualizarusuario/:id",
   isAuthenticatedUser,
   rolAutorizado("admin"),
-  getUserDetails
+  updateUser
 );
 router.delete(
   "/admin/borrarusuario/:id",
   isAuthenticatedUser,
   rolAutorizado("admin"),
-  getUserDetails
+  deleteUser
 );
 export default router;

@@ -258,6 +258,11 @@ export const deleteUser = async (req, res, next) => {
     if (!user) {
       throw new Error("No existe el usuario !");
     }
+    await user.deleteOne();
+    res.status(200).json({
+      success: true,
+      user,
+    });
   } catch (error) {
     res.status(404).send({
       success: false,
